@@ -1,8 +1,10 @@
 from __future__ import print_function
 
 import os.path
-import pprint
+# import pprint
 import re
+
+import time
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -17,6 +19,8 @@ def main():
     """Shows basic usage of the Gmail API.
     Lists the user's Gmail labels.
     """
+    # adding a delay so the mfa can arrive
+    time.sleep(10)
     creds = None
     # The file credentials.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -49,7 +53,7 @@ def main():
                 rawcode = m['snippet']
                 mfa = re.findall(r'\d{6}',rawcode)[0]
                 if mfa.isdigit()==True:
-                    print(mfa)
+                    return mfa
                 break
 
     except HttpError as error:
