@@ -15,7 +15,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 
-def main():
+def fetch_mfa():
     """Shows basic usage of the Gmail API.
     Lists the user's Gmail labels.
     """
